@@ -31,8 +31,14 @@ export const CocktailProvider = ({ children }) => {
     }
   }
 
+  const reset = () => {
+    dispatch({ type: 'RESET' })
+  }
+
   return (
-    <CocktailContext.Provider value={{ ...state, getCocktail, getCocktails }}>
+    <CocktailContext.Provider
+      value={{ ...state, getCocktail, getCocktails, reset }}
+    >
       {children}
     </CocktailContext.Provider>
   )

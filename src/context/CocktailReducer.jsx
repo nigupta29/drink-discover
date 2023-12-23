@@ -22,6 +22,9 @@ export const cocktailReducer = (state, action) => {
       // paylaod : error message <string>
       return { ...state, error: action.payload, loading: false }
 
+    case 'RESET':
+      return initialState
+
     default:
       break
   }

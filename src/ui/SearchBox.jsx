@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useCocktail } from '../context/CocktailContext'
 
 const SearchBox = () => {
-  const { loading, getCocktails } = useCocktail()
+  const { loading, getCocktails, reset } = useCocktail()
 
   const [search, setSearch] = useState('')
 
@@ -12,6 +12,11 @@ const SearchBox = () => {
     if (!search) return
 
     await getCocktails(search.toLowerCase())
+  }
+
+  const handleClear = () => {
+    setSearch('')
+    reset()
   }
 
   return (
@@ -34,7 +39,7 @@ const SearchBox = () => {
       {search && (
         <button
           type="reset"
-          onClick={() => setSearch('')}
+          onClick={handleClear}
           className={`btn btn-square btn-ghost`}
         >
           <RiCloseFill className="h-6 w-6" />
