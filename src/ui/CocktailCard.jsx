@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Image from './Image'
 
 const CocktailCard = ({ item }) => {
   const { idDrink, strDrink, strDrinkThumb, strAlcoholic, strCategory } = item
@@ -7,12 +8,7 @@ const CocktailCard = ({ item }) => {
     <Link to={`/cocktail/${idDrink}`}>
       <div className="card bg-base-100 shadow-xl">
         <figure>
-          <img
-            className="h-48 w-full object-cover lg:h-full"
-            src={strDrinkThumb}
-            alt={strDrink}
-            loading="lazy"
-          />
+          <Image imageUrl={strDrinkThumb} altText={strDrink} />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{strDrink}</h2>

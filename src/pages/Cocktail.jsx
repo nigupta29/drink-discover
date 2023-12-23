@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useCocktail } from '../context/CocktailContext'
+import Image from '../ui/Image'
 import { CardLoader } from '../ui/Loaders'
 
 const Cocktail = () => {
@@ -16,13 +17,21 @@ const Cocktail = () => {
 
   if (loading) return <CardLoader />
 
+  const { strDrink, strDrinkThumb } = item
+
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="mx-auto flex max-w-5xl flex-col items-center justify-center">
       {error && <h3 className="alert alert-error">{error}</h3>}
       <h3 className="text-center text-2xl font-semibold md:text-3xl">
-        {item?.strDrink}
+        {strDrink}
       </h3>
-      <img loading="lazy" src={item?.strDrinkThumb} alt="" />
+      <div>
+        <Image
+          imageUrl={strDrinkThumb}
+          altText={strDrink}
+          height="100%"
+        />
+      </div>
     </div>
   )
 }
