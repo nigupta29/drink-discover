@@ -9,11 +9,11 @@ export const cocktailReducer = (state, action) => {
   switch (action.type) {
     case 'SET_COCKTAIL':
       // payload : drink <object { idDrink, strDrink, ... }>
-      return { ...state, item: action.payload, loading: false }
+      return { ...state, item: action.payload, loading: false, error: null }
 
     case 'SET_COCKTAILS':
       // payload : <Array of drink : <object { idDrink, strDrink, ... }>>
-      return { ...state, items: action.payload, loading: false }
+      return { ...state, items: action.payload, loading: false, error: null }
 
     case 'SET_LOADING':
       return { ...state, loading: true }

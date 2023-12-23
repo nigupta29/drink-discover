@@ -6,7 +6,7 @@ import { CardLoader } from '../ui/Loaders'
 
 const Cocktail = () => {
   const { id } = useParams()
-  const { loading, item, getCocktail, error } = useCocktail()
+  const { loading, item, getCocktail } = useCocktail()
 
   useEffect(() => {
     const getCocktailData = async () => {
@@ -21,16 +21,11 @@ const Cocktail = () => {
 
   return (
     <div className="mx-auto flex max-w-5xl flex-col items-center justify-center">
-      {error && <h3 className="alert alert-error">{error}</h3>}
       <h3 className="text-center text-2xl font-semibold md:text-3xl">
         {strDrink}
       </h3>
       <div>
-        <Image
-          imageUrl={strDrinkThumb}
-          altText={strDrink}
-          height="100%"
-        />
+        <Image imageUrl={strDrinkThumb} altText={strDrink} height="100%" />
       </div>
     </div>
   )
