@@ -4,7 +4,7 @@ import ThemeChange from './ThemeChange'
 
 const Navbar = () => {
   return (
-    <div className="navbar mx-auto max-w-2xl shadow-md sm:rounded-badge">
+    <div className="navbar mx-auto max-w-2xl shadow-md shadow-base-300 sm:mt-2 sm:rounded-badge">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-circle btn-ghost">
