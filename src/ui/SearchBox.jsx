@@ -1,11 +1,17 @@
 import { RiCloseFill, RiSearchLine } from '@remixicon/react'
 import { useState } from 'react'
+import { useCocktail } from '../context/CocktailContext'
 
 const SearchBox = () => {
+  const { loading, getCocktails } = useCocktail()
+
   const [search, setSearch] = useState('')
 
-  const handelSubmit = e => {
+  const handelSubmit = async e => {
     e.preventDefault()
+    if (!search) return
+
+    await getCocktails(search.toLowerCase())
   }
 
   return (
@@ -22,7 +28,9 @@ const SearchBox = () => {
         className="input flex-grow text-lg focus:border-0 focus:outline-none"
         value={search}
         onChange={e => setSearch(e.target.value)}
+        disabled={loading}
       />
+      <button type="submit" className="hidden" disabled={loading}></button>
       {search && (
         <button
           type="reset"
@@ -32,7 +40,6 @@ const SearchBox = () => {
           <RiCloseFill className="h-6 w-6" />
         </button>
       )}
-      <button type="submit" className="hidden"></button>
     </form>
   )
 }

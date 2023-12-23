@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { createContext, useContext, useReducer } from 'react'
-import { getCocktailApi } from '../services/apiCocktailDB'
+import { getCocktailApi, getCocktailsApi } from '../services/apiCocktailDB'
 import { cocktailReducer, initialState } from './CocktailReducer'
 
 const CocktailContext = createContext()
@@ -21,8 +21,18 @@ export const CocktailProvider = ({ children }) => {
     }
   }
 
+  const getCocktails = async searchValue => {
+    try {
+      setLoading()
+      const cocktailData = await getCocktailsApi(searchValue)
+      dispatch({ type: 'SET_COCKTAILS', payload: cocktailData })
+    } catch (error) {
+      setError(error.message)
+    }
+  }
+
   return (
-    <CocktailContext.Provider value={{ ...state, getCocktail }}>
+    <CocktailContext.Provider value={{ ...state, getCocktail, getCocktails }}>
       {children}
     </CocktailContext.Provider>
   )
