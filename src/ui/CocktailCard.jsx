@@ -8,7 +8,12 @@ const CocktailCard = ({ item }) => {
     <Link to={`/cocktail/${idDrink}`}>
       <div className="card bg-base-100 shadow-xl">
         <figure>
-          <Image imageUrl={strDrinkThumb} altText={strDrink} />
+          <Image
+            imageUrl={strDrinkThumb}
+            altText={strDrink}
+            height={'18rem'}
+            container
+          />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{strDrink}</h2>

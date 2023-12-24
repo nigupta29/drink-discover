@@ -4,10 +4,10 @@ import Navbar from './Navbar'
 
 const AppLayout = () => {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-8">
       <Navbar />
 
-      <main className="mx-auto w-full px-5 md:max-w-5xl">
+      <main className="mx-auto px-5 container">
         <Error />
         <Outlet />
       </main>

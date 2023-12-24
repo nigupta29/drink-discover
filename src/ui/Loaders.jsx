@@ -33,8 +33,8 @@ export const CardImageLoader = () => {
 
 export const CardLoader = () => {
   return (
-    <div className="mx-auto w-full max-w-5xl space-y-4 rounded-xl p-5">
-      <div className="h-56 overflow-hidden rounded-badge">
+    <div className="mx-auto w-full space-y-4 md:w-1/2">
+      <div className="h-56 overflow-hidden rounded-lg">
         <CardImageLoader />
       </div>
       <div className="skeleton h-5"></div>

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { CardImageLoader } from './Loaders'
 
-const Image = ({ imageUrl, altText, height }) => {
+const Image = ({ imageUrl, altText, height, className, container }) => {
   const [isLoading, setIsLoading] = useState(true)
 
   const handleImageLoad = () => {
@@ -10,13 +10,17 @@ const Image = ({ imageUrl, altText, height }) => {
   }
 
   return (
-    <div className="relative w-full bg-base-300" style={{ height }}>
+    <div
+      className={`relative overflow-hidden rounded-xl ${
+        container ? 'w-full' : ''
+      }`}
+      style={{ height }}
+    >
       <img
         src={imageUrl}
         alt={altText}
         onLoad={handleImageLoad}
-        height={height}
-        className="w-full object-cover"
+        className={className + ' w-full object-cover'}
         loading="lazy"
         style={{ height }}
       />
@@ -31,13 +35,15 @@ const Image = ({ imageUrl, altText, height }) => {
 }
 
 Image.defaultProps = {
-  height: '18rem',
+  height: '30rem',
+  className: '',
 }
 
 Image.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   altText: PropTypes.string.isRequired,
-  height: PropTypes.string.isRequired,
+  height: PropTypes.string,
+  className: PropTypes.string,
 }
 
 export default Image
