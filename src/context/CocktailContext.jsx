@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types'
 import { createContext, useContext, useReducer } from 'react'
-import { getCocktailApi, getCocktailsApi } from '../services/apiCocktailDB'
+import {
+  getCocktailApi,
+  getCocktailsApi,
+  getCocktailsByFilterApi,
+} from '../services/apiCocktailDB'
 import { cocktailReducer, initialState } from './CocktailReducer'
 
 const CocktailContext = createContext()
@@ -31,13 +35,29 @@ export const CocktailProvider = ({ children }) => {
     }
   }
 
+  const getCocktailsByFilter = async filterString => {
+    try {
+      setLoading()
+      const cocktailData = await getCocktailsByFilterApi(filterString)
+      dispatch({ type: 'SET_COCKTAILS', payload: cocktailData })
+    } catch (error) {
+      setError(error.message)
+    }
+  }
+
   const reset = () => {
     dispatch({ type: 'RESET' })
   }
 
   return (
     <CocktailContext.Provider
-      value={{ ...state, getCocktail, getCocktails, reset }}
+      value={{
+        ...state,
+        getCocktail,
+        getCocktails,
+        getCocktailsByFilter,
+        reset,
+      }}
     >
       {children}
     </CocktailContext.Provider>

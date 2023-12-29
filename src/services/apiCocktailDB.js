@@ -16,3 +16,12 @@ export const getCocktailsApi = async searchValue => {
   const data = await res.json()
   return data.drinks
 }
+
+// e.g. filter string - ?a=Non_Alcoholic
+export const getCocktailsByFilterApi = async filterString => {
+  const FETCH_URL = `${cocktailDBApiUrl}/filter.php${filterString}`
+  const res = await fetch(FETCH_URL)
+  const data = await res.json()
+  return data.drinks
+}
+
