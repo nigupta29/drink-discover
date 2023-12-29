@@ -21,6 +21,9 @@ const Navbar = () => {
               <Link to="/">Explore</Link>
             </li>
             <li>
+              <Link to="/search">Find</Link>
+            </li>
+            <li>
               <Link to="/">About</Link>
             </li>
           </ul>

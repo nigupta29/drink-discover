@@ -1,32 +1,33 @@
-import { RiCloseFill, RiSearchLine } from '@remixicon/react'
+import { RiCloseFill } from '@remixicon/react'
 import { useState } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useCocktail } from '../context/CocktailContext'
 
 const SearchBox = () => {
-  const { loading, getCocktails, reset } = useCocktail()
+  const { loading, reset } = useCocktail()
+  const [searchParams, setSearchParams] = useSearchParams()
 
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState(searchParams.get('q'))
+  const navigate = useNavigate()
 
   const handelSubmit = async e => {
     e.preventDefault()
     if (!search) return
 
-    await getCocktails(search.toLowerCase())
+    navigate(`/search?q=${search.toLowerCase()}`)
   }
 
   const handleClear = () => {
     setSearch('')
     reset()
+    setSearchParams({})
   }
 
   return (
     <form
       onSubmit={handelSubmit}
-      className={`mx-auto flex items-center justify-center gap-1 border-b-2 border-primary py-2 focus-within:w-full md:gap-3 ${
-        search ? 'w-full' : ''
-      }`}
+      className={`gap- flex w-full items-center justify-center border-b-2 border-primary py-2 md:gap-3`}
     >
-      <RiSearchLine className="h-6 w-6" />
       <input
         type="text"
         placeholder="Mix it up..."
@@ -40,7 +41,7 @@ const SearchBox = () => {
         <button
           type="reset"
           onClick={handleClear}
-          className={`btn btn-square btn-ghost`}
+          className={`btn btn-square btn-ghost p-0`}
         >
           <RiCloseFill className="h-6 w-6" />
         </button>
