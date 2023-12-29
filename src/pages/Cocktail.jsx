@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useCocktail } from '../context/CocktailContext'
 import Image from '../ui/Image'
 import { CardLoader } from '../ui/Loaders'
@@ -36,7 +36,7 @@ const Cocktail = () => {
 
       {/* <div className="space-y-5 rounded-xl border-2 border-base-300 p-5"></div> */}
       <h1 className="text-3xl font-bold">{strDrink}</h1>
-      <div className="flex flex-wrap gap-2 font-mono lg:gap-4">
+      <div className="flex flex-wrap justify-center gap-2 font-mono lg:gap-4">
         <div className="badge badge-secondary">{strCategory}</div>
         <div className="badge badge-primary">{strGlass}</div>
         <div className="badge badge-accent">{strAlcoholic}</div>
@@ -53,20 +53,22 @@ const Cocktail = () => {
               const measureValue = item[measureKey]
 
               return (
-                <li
-                  key={key}
-                  className="flex min-h-48 flex-col flex-wrap items-center justify-between gap-2 rounded-lg bg-base-200 p-3"
-                >
-                  <h3 className="font-semibold capitalize">{value}</h3>
-                  <p>{measureValue}</p>
-                  <img
-                    src={`https://www.thecocktaildb.com/images/ingredients/${value}-small.png`}
-                    alt=""
-                  />
-                </li>
+                <Link key={key} to={`/filter?i=${value}`}>
+                  <li className="flex min-h-48 flex-col flex-wrap items-center justify-between gap-2 rounded-lg bg-base-200 p-3 hover:scale-105 hover:bg-base-300">
+                    <h3 className="font-semibold capitalize">{value}</h3>
+                    <p>{measureValue}</p>
+                    <img
+                      src={`https://www.thecocktaildb.com/images/ingredients/${value}-small.png`}
+                      alt=""
+                    />
+                  </li>
+                </Link>
               )
             })}
         </ul>
+        <p className="text-base-content/50">
+          Click on any one tabs above to get more ideas!
+        </p>
       </div>
       <div className="max-w-xl space-y-2">
         <h2 className="text-xl font-bold">Instructions:</h2>

@@ -7,7 +7,7 @@ const SearchBox = () => {
   const { loading, reset } = useCocktail()
   const [searchParams, setSearchParams] = useSearchParams()
 
-  const [search, setSearch] = useState(searchParams.get('q'))
+  const [search, setSearch] = useState(searchParams.get('q') || '')
   const navigate = useNavigate()
 
   const handelSubmit = async e => {

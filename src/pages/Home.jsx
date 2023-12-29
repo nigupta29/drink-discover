@@ -9,7 +9,6 @@ import {
 const Home = () => {
   return (
     <div className="flex w-full flex-col justify-center gap-5 px-4 lg:mx-auto lg:max-w-[1366px]">
-      Home
       <div className="space-y-5">
         <section className="space-y-3">
           <h3 className="text-xl">Explore by Alcohol Type</h3>
@@ -61,12 +60,14 @@ const Home = () => {
 
           <ul className="flex flex-wrap gap-5">
             {ingredientsList.map(type => (
-              <Link
-                key={`${type}`}
-                className="btn btn-primary"
-                to={`/filter?i=${type}`}
-              >
-                <li className="capitalize">{type}</li>
+              <Link key={`${type}`} to={`/filter?i=${type}`}>
+                <div>
+                  <li className="capitalize">{type}</li>
+                  <img
+                    src={`https://www.thecocktaildb.com/images/ingredients/${type}-small.png`}
+                    alt=""
+                  />
+                </div>
               </Link>
             ))}
           </ul>
