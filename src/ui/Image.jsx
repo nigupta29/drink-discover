@@ -20,7 +20,10 @@ const Image = ({ imageUrl, altText, height, className, container }) => {
         src={imageUrl}
         alt={altText}
         onLoad={handleImageLoad}
-        className={className + ' w-full object-cover'}
+        className={
+          className +
+          ' w-full object-cover transition-all duration-500 ease-in-out hover:scale-105'
+        }
         loading="lazy"
         style={{ height }}
       />

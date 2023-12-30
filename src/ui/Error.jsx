@@ -6,7 +6,10 @@ const Error = () => {
 
   return (
     error && (
-      <div role="alert" className="alert alert-error justify-center">
+      <div
+        role="alert"
+        className="alert alert-error animate-pulse justify-center"
+      >
         <RiErrorWarningLine />
         <span>{error}</span>
       </div>

@@ -10,7 +10,7 @@ const NavLinkItem = ({ link, Icon, square, title }) => {
           square ? 'btn-square' : 'btn-circle'
         }`}
       >
-        <Icon className="h-7 w-7 fill-primary-content group-hover:fill-secondary" />
+        <Icon className="h-7 w-7 fill-primary-content group-hover:fill-base-content" />
       </Link>
     </div>
   )
