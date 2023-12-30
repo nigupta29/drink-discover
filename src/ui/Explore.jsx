@@ -18,7 +18,7 @@ const Explore = () => {
       </h3>
       <p className="text-base-content/50">{`Click on any one to get this party started!`}</p>
 
-      <ul className="grid grid-cols-4 gap-5 md:grid-cols-6 lg:grid-cols-8">
+      <ul className="grid grid-cols-3 gap-5 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         {filterData.map(item => (
           <Link
             key={`${item}`}
