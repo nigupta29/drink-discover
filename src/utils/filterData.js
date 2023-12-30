@@ -1,4 +1,4 @@
-export const categoriesList = [
+const categoryList = [
   'Ordinary Drink',
   'Cocktail',
   'Shake',
@@ -12,7 +12,7 @@ export const categoriesList = [
   'Soft Drink',
 ]
 
-export const glassesList = [
+const glassesList = [
   'Highball glass',
   'Cocktail glass',
   'Old-fashioned glass',
@@ -47,7 +47,7 @@ export const glassesList = [
   'Coupe Glass',
 ]
 
-export const ingredientsList = [
+const ingredientsList = [
   'Light rum',
   'Applejack',
   'Gin',
@@ -150,4 +150,20 @@ export const ingredientsList = [
   'Creme de Cassis',
 ]
 
-export const alcholTypes = ['Alcoholic', 'Non alcoholic', 'Optional alcohol']
+const alcoholList = ['Alcoholic', 'Non alcoholic', 'Optional alcohol']
+
+export const getFilterDetailsArray = type => {
+  switch (type) {
+    case 'alcohol':
+      return alcoholList
+    case 'glasses':
+      return glassesList
+    case 'ingredients':
+      return ingredientsList
+    case 'category':
+      return categoryList
+
+    default:
+      return null
+  }
+}

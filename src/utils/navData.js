@@ -7,22 +7,22 @@ import {
 
 export const navItems = [
   {
-    link: '/',
+    link: '/explore/alcohol',
     title: 'Alcohol',
     Icon: RiDrinksLine,
   },
   {
-    link: '/',
+    link: '/explore/glasses',
     title: 'Glass',
     Icon: RiBeerLine,
   },
   {
-    link: '/',
+    link: '/explore/category',
     title: 'Category',
     Icon: RiVoiceprintLine,
   },
   {
-    link: '/',
+    link: '/explore/ingredients',
     title: 'Ingredients',
     Icon: RiStackLine,
   },
