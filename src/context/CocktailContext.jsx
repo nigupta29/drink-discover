@@ -41,7 +41,7 @@ export const CocktailProvider = ({ children }) => {
       const cocktailData = await getCocktailsByFilterApi(filterString)
       dispatch({ type: 'SET_COCKTAILS', payload: cocktailData })
     } catch (error) {
-      setError(error.message)
+      setError(`Unable to find any cocktails for ${filterString.split('=')[1]}`)
     }
   }
 

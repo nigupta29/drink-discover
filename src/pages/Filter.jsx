@@ -23,17 +23,27 @@ const Filter = () => {
   }, [location])
 
   return (
-    <div className="mt-5 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-      {loading ? (
-        <Loaders />
-      ) : (
-        <>
-          {!items && <p>No search results</p>}
-          {items?.map(item => (
-            <CocktailCard key={item.idDrink} item={item} />
-          ))}
-        </>
+    <div className="space-y-8">
+      {!loading && items && (
+        <h3 className="text-2xl md:text-3xl">
+          {`Showing ${items?.length} Cocktails related to `}
+          <span className="capitalize underline decoration-primary">
+            {location.search.split('=')[1].replaceAll('%20', ' ')}
+          </span>
+        </h3>
       )}
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {loading ? (
+          <Loaders />
+        ) : (
+          <>
+            {!items && <p>No search results</p>}
+            {items?.map(item => (
+              <CocktailCard key={item.idDrink} item={item} />
+            ))}
+          </>
+        )}
+      </div>
     </div>
   )
 }

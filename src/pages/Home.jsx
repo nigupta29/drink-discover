@@ -1,78 +1,34 @@
 import { Link } from 'react-router-dom'
-import {
-  alcholTypes,
-  categoriesList,
-  glassesList,
-  ingredientsList,
-} from '../utils/filterData'
+import AboutSection from '../ui/AboutSection'
+import RandomCocktail from '../ui/RandomCocktail'
+import { navItems } from '../utils/navData'
 
 const Home = () => {
   return (
-    <div className="flex w-full flex-col justify-center gap-5 px-4 lg:mx-auto lg:max-w-[1366px]">
-      <div className="space-y-5">
-        <section className="space-y-3">
-          <h3 className="text-xl">Explore by Alcohol Type</h3>
-
-          <ul className="flex flex-wrap gap-5">
-            {alcholTypes.map(type => (
+    <div className="space-y-5">
+      <div className="flex flex-col gap-5 lg:flex-row">
+        <RandomCocktail />
+        <div className="w-full lg:w-1/2">
+          <h3 className="mb-8 text-center text-3xl font-semibold lg:mb-12 lg:text-start lg:text-4xl">
+            Explore
+          </h3>
+          <div className="grid grid-cols-2 gap-8">
+            {navItems.map(item => (
               <Link
-                key={`${type}`}
-                className="btn btn-primary"
-                to={`/filter?a=${type}`}
+                to={item.link}
+                key={item.id}
+                className="w-full rounded-xl bg-gradient-to-r from-primary to-accent p-5 hover:scale-105 hover:bg-gradient-to-tr"
               >
-                <li className="capitalize">{type}</li>
+                <item.Icon className="mb-3 h-10 w-10 fill-gray-700" />
+                <h4 className="my-auto text-xl capitalize text-primary-content">
+                  {item.title}
+                </h4>
               </Link>
             ))}
-          </ul>
-        </section>
-        <section className="space-y-3">
-          <h3 className="text-xl">Explore by Categories</h3>
-
-          <ul className="flex flex-wrap gap-5">
-            {categoriesList.map(type => (
-              <Link
-                key={`${type}`}
-                className="btn btn-primary"
-                to={`/filter?c=${type}`}
-              >
-                <li className="capitalize">{type}</li>
-              </Link>
-            ))}
-          </ul>
-        </section>
-        <section className="space-y-3">
-          <h3 className="text-xl">Explore by Glasses</h3>
-
-          <ul className="flex flex-wrap gap-5">
-            {glassesList.map(type => (
-              <Link
-                key={`${type}`}
-                className="btn btn-primary"
-                to={`/filter?g=${type}`}
-              >
-                <li className="capitalize">{type}</li>
-              </Link>
-            ))}
-          </ul>
-        </section>
-        <section className="space-y-3">
-          <h3 className="text-xl">Explore by Ingredients</h3>
-
-          <ul className="flex flex-wrap gap-5">
-            {ingredientsList.map(type => (
-              <Link key={`${type}`} to={`/filter?i=${type}`}>
-                <div>
-                  <li className="capitalize">{type}</li>
-                  <img
-                    src={`https://www.thecocktaildb.com/images/ingredients/${type}-small.png`}
-                    alt=""
-                  />
-                </div>
-              </Link>
-            ))}
-          </ul>
-        </section>
+          </div>
+        </div>
       </div>
+      <AboutSection />
     </div>
   )
 }
