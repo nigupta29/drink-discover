@@ -34,7 +34,7 @@ const Cocktail = () => {
         className="drop-shadow"
       />
 
-      <div className="space-y-5 rounded-xl border-base-300 px-4  py-5 lg:border-2">
+      <div className="space-y-5 border-base-300 px-4  py-5 lg:border-l-2">
         <h1 className="text-3xl font-bold">{strDrink}</h1>
         <div className="flex flex-wrap justify-center gap-2 font-mono lg:gap-4">
           <div className="badge badge-secondary">{strCategory}</div>
