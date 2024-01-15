@@ -4,7 +4,7 @@ import { getFilterDetailsArray } from '../utils/filterData'
 const Explore = () => {
   const { type } = useParams()
 
-  const filterData = getFilterDetailsArray(type.toLowerCase())
+  const filterData = getFilterDetailsArray(type.toLowerCase()).sort()
 
   if (!filterData) return <Navigate to="/" replace />
 

@@ -74,7 +74,7 @@ const ingredientsList = [
   'Bitters',
   'Sugar',
   'Kahlua',
-  'demerara Sugar',
+  'Demerara Sugar',
   'Dubonnet Rouge',
   'Watermelon',
   'Lime juice',
