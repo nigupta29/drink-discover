@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Cocktail from './pages/Cocktail'
 import Filter from './pages/Filter'
 import Home from './pages/Home'
+import NotFound from './pages/NotFound'
 import Search from './pages/Search'
 import AppLayout from './ui/AppLayout'
 import Explore from './ui/Explore'
@@ -24,6 +25,7 @@ const App = () => {
             <Route index element={<Navigate to={'/'} replace />} />
             <Route path=":type" element={<Explore />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
